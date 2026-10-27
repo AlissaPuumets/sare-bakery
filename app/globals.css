@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 :root {
@@ -49,6 +50,8 @@ button {
   color: white;
 }
 
+/* Navigation */
+
 .navbar {
   min-height: 75px;
   padding: 14px 7%;
@@ -91,6 +94,8 @@ button {
   color: var(--blue);
 }
 
+/* Hero */
+
 .hero {
   min-height: 540px;
   padding: 90px 20px 60px;
@@ -108,7 +113,8 @@ button {
 
 .hero-wordmark {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   color: var(--blue);
   font-family: var(--serif);
   font-size: clamp(90px, 15vw, 155px);
@@ -156,6 +162,8 @@ button {
   opacity: .7;
 }
 
+/* Menu */
+
 .menu-section {
   padding: 85px 0 75px;
   background: var(--cream);
@@ -176,7 +184,7 @@ button {
   line-height: 1.1;
 }
 
-.section-title>p:last-child {
+.section-title > p:last-child {
   color: #75696d;
 }
 
@@ -207,7 +215,7 @@ button {
   color: var(--blue);
 }
 
-.product-art>span {
+.product-art > span {
   font-family: var(--serif);
   font-size: 75px;
 }
@@ -252,7 +260,7 @@ button {
   line-height: 1.2;
 }
 
-.product-heading>span {
+.product-heading > span {
   flex-shrink: 0;
   color: var(--blue);
   font-size: 11px;
@@ -285,13 +293,11 @@ button {
   text-align: center;
 }
 
+/* Order section */
+
 .small-note {
   color: #75696d;
   font-size: 10px;
-}
-
-.menu-section>.small-note {
-  text-align: center;
 }
 
 .order-section {
@@ -310,7 +316,7 @@ button {
   max-width: 330px;
 }
 
-.order-intro>p:not(.eyebrow) {
+.order-intro > p:not(.eyebrow) {
   max-width: 300px;
   color: #57454f;
   font-size: 13px;
@@ -330,8 +336,11 @@ button {
   vertical-align: top;
 }
 
+/* Form */
+
 .order-form,
 .success {
+  min-width: 0;
   padding: 32px;
   background: var(--cream);
 }
@@ -349,7 +358,7 @@ button {
   margin-top: 35px;
 }
 
-.form-title>span {
+.form-title > span {
   color: var(--blue);
   font-size: 10px;
 }
@@ -405,7 +414,10 @@ button {
   resize: vertical;
 }
 
+/* Individual product quantities */
+
 .flavours {
+  min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
@@ -416,7 +428,7 @@ button {
   font-weight: 500;
 }
 
-.flavours>.small-note {
+.flavours > .small-note {
   margin: 5px 0 13px;
 }
 
@@ -429,26 +441,64 @@ button {
 .flavour {
   display: flex;
   align-items: center;
-  gap: 9px;
-  min-height: 43px;
-  padding: 9px;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 10px;
   border: 1px solid #e3d6d9;
   background: #fffdfa;
   cursor: pointer;
   font-size: 11px;
+  transition: border-color .2s, background .2s;
 }
 
-.flavour:has(input:checked) {
+.flavour:focus-within {
   border-color: var(--blue);
   background: #f5edf3;
 }
 
-.flavour input {
-  width: 14px;
-  height: 14px;
-  margin: 0;
-  accent-color: var(--blue);
+.flavour > span {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.4;
 }
+
+.flavour select {
+  flex-shrink: 0;
+  width: 60px;
+  min-width: 60px;
+  min-height: 36px;
+  padding: 6px 8px;
+  border: 1px solid #e3d6d9;
+  border-radius: 0;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.flavour select:focus {
+  border-color: var(--blue);
+}
+
+.order-total {
+  margin-top: 20px;
+  padding: 14px 15px;
+  border-top: 1px solid var(--line);
+  background: #f7edf3;
+}
+
+.order-total p {
+  margin: 0 0 5px;
+}
+
+.order-total p:last-child {
+  margin-bottom: 0;
+}
+
+/* Submit button */
 
 .submit-button {
   display: flex;
@@ -456,6 +506,7 @@ button {
   align-items: center;
   width: 100%;
   min-height: 50px;
+  margin-top: 10px;
   padding: 14px 17px;
   border: 1px solid var(--blue);
   background: var(--blue);
@@ -463,11 +514,17 @@ button {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.3px;
+  transition: .2s;
 }
 
-.submit-button:hover {
+.submit-button:hover:not(:disabled) {
   background: transparent;
   color: var(--blue);
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: .7;
 }
 
 .form-disclaimer {
@@ -477,6 +534,8 @@ button {
   line-height: 1.8;
   text-align: center;
 }
+
+/* Success message */
 
 .success {
   text-align: center;
@@ -505,6 +564,8 @@ button {
   margin-top: 10px;
 }
 
+/* Footer */
+
 footer {
   padding: 60px 7% 20px;
   background: var(--blue);
@@ -517,7 +578,7 @@ footer {
   font-size: 54px;
 }
 
-footer>p {
+footer > p {
   font-family: var(--serif);
   font-size: 19px;
   font-style: italic;
@@ -540,6 +601,37 @@ footer>p {
   font-size: 8px;
 }
 
+/* Header and footer logo images */
+
+.brand {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.brand img {
+  display: block;
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.hero-wordmark img {
+  display: block;
+  width: min(450px, 85vw);
+  height: 240px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.footer-brand img {
+  display: block;
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Tablet */
+
 @media (max-width: 800px) {
   .order-section {
     grid-template-columns: 1fr;
@@ -556,6 +648,8 @@ footer>p {
   }
 }
 
+/* Mobile */
+
 @media (max-width: 520px) {
   .navbar {
     padding: 14px 5%;
@@ -570,12 +664,18 @@ footer>p {
     letter-spacing: .5px;
   }
 
+  .brand img {
+    width: 70px;
+    height: 70px;
+  }
+
   .hero {
     min-height: 430px;
   }
 
-  .hero-wordmark {
-    font-size: 100px;
+  .hero-wordmark img {
+    width: 85vw;
+    height: 140px;
   }
 
   .tagline {
@@ -613,47 +713,8 @@ footer>p {
   .fields .wide {
     grid-column: auto;
   }
-}
 
-/* Header logo */
-.brand {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/* Header logo */
-.brand img {
-  display: block;
-  width: 80px;
-  height: 100px;
-  object-fit: contain;
-}
-
-/* Large hero logo */
-.hero-wordmark img {
-  display: block;
-  width: min(450px, 1000vw);
-  height: 240px;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-/* Smaller screens */
-@media (max-width: 600px) {
-  .brand img {
-    width: 100px;
-    height: 70px;
+  .flavour {
+    min-height: 48px;
   }
-
-  .hero-wordmark img {
-    width: 85vw;
-    height: 140px;
-  }
-}
-
-.footer-brand img {
-  display: block;
-  width: 120px;
-  height: auto;
-  object-fit: contain;
 }

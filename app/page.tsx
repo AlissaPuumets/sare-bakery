@@ -6,32 +6,71 @@ import { useForm, ValidationError } from "@formspree/react";
 import "./globals.css";
 
 const products = [
-  { name: "Chocolate Chip", type: "COOKIE", price: "€3.00", description: "Golden edges, soft centre, dark chocolate.", symbol: "✳" },
-  { name: "Strawberry Cloud", type: "COOKIE", price: "€3.50", description: "White chocolate with a strawberry twist.", symbol: "♡" },
-  { name: "Brown Butter Bliss", type: "COOKIE", price: "€3.50", description: "Brown butter and a touch of sea salt.", symbol: "✳" },
-  { name: "Fudgy Brownie", type: "BROWNIE", price: "€3.00", description: "Rich, chocolatey, and perfectly fudgy.", symbol: "♡" },
-  { name: "Vanilla Dream", type: "COOKIE", price: "€3.00", description: "A buttery vanilla cookie with white chocolate.", symbol: "✳" },
-  { name: "The Saré Box", type: "GIFT BOX", price: "€18.00", description: "A little box filled with our favourites.", symbol: "♡" },
+  {
+    name: "Chocolate Chip",
+    type: "COOKIE",
+    price: "€3.00",
+    description: "Golden edges, soft centre, dark chocolate.",
+    symbol: "✳",
+  },
+  {
+    name: "Strawberry Cloud",
+    type: "COOKIE",
+    price: "€3.50",
+    description: "White chocolate with a strawberry twist.",
+    symbol: "♡",
+  },
+  {
+    name: "Brown Butter Bliss",
+    type: "COOKIE",
+    price: "€3.50",
+    description: "Brown butter and a touch of sea salt.",
+    symbol: "✳",
+  },
+  {
+    name: "Fudgy Brownie",
+    type: "BROWNIE",
+    price: "€3.00",
+    description: "Rich, chocolatey, and perfectly fudgy.",
+    symbol: "♡",
+  },
+  {
+    name: "Vanilla Dream",
+    type: "COOKIE",
+    price: "€3.00",
+    description: "A buttery vanilla cookie with white chocolate.",
+    symbol: "✳",
+  },
+  {
+    name: "The Saré Box",
+    type: "GIFT BOX",
+    price: "€18.00",
+    description: "A little box filled with our favourites.",
+    symbol: "♡",
+  },
 ];
 
-const flavours = products.map((product) => product.name);
-
 export default function Home() {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [quantities, setQuantities] = useState<Record<string, number>>(
+    Object.fromEntries(products.map((product) => [product.name, 0]))
+  );
 
+  const [minPickupDate, setMinPickupDate] = useState("");
 
   const [state, handleSubmit, reset] = useForm("mjyyyzzd");
 
-  function toggleFlavour(name: string) {
-    setSelected((previous) =>
-      previous.includes(name)
-        ? previous.filter((item) => item !== name)
-        : [...previous, name]
-    );
-  }
+  const totalQuantity = Object.values(quantities).reduce(
+    (total, quantity) => total + quantity,
+    0
+  );
 
-
-  const [minPickupDate, setMinPickupDate] = useState("");
+  const orderDetails = products
+    .filter((product) => quantities[product.name] > 0)
+    .map(
+      (product) =>
+        `${product.name}: ${quantities[product.name]} piece(s)`
+    )
+    .join("\n");
 
   useEffect(() => {
     const date = new Date();
@@ -44,6 +83,12 @@ export default function Home() {
     setMinPickupDate(localDate);
   }, []);
 
+  function updateQuantity(name: string, quantity: number) {
+    setQuantities((previous) => ({
+      ...previous,
+      [name]: quantity,
+    }));
+  }
 
   return (
     <main>
@@ -51,6 +96,7 @@ export default function Home() {
         <a className="brand" href="#home" aria-label="Saré home">
           <img src="/sare-logo.png" alt="Saré bakery logo" />
         </a>
+
         <nav>
           <a href="#menu">THE MENU</a>
           <a href="#order">YOUR ORDER</a>
@@ -59,12 +105,22 @@ export default function Home() {
 
       <section className="hero" id="home">
         <p className="eyebrow">A SMALL BAKERY WITH A BIG HEART</p>
+
         <div className="hero-wordmark">
           <img src="/sare-logo.png" alt="Saré bakery" />
         </div>
-        <p className="tagline">Little treats, made to make your day.</p>
-        <a className="outline-button" href="#menu">DISCOVER THE MENU ↓</a>
-        <p className="hero-bottom">HANDMADE · FRESHLY BAKED · MADE WITH LOVE</p>
+
+        <p className="tagline">
+          Little treats, made to make your day.
+        </p>
+
+        <a className="outline-button" href="#menu">
+          DISCOVER THE MENU ↓
+        </a>
+
+        <p className="hero-bottom">
+          HANDMADE · FRESHLY BAKED · MADE WITH LOVE
+        </p>
       </section>
 
       <section className="menu-section" id="menu">
@@ -81,26 +137,40 @@ export default function Home() {
                 <span>{product.symbol}</span>
                 <small>SARÉ PATISSERIE</small>
               </div>
+
               <p className="product-type">{product.type}</p>
+
               <div className="product-heading">
                 <h2>{product.name}</h2>
                 <span>{product.price}</span>
               </div>
-              <p className="product-description">{product.description}</p>
+
+              <p className="product-description">
+                {product.description}
+              </p>
+
               <button
+                type="button"
                 className="add-button"
                 onClick={() => {
-                  toggleFlavour(product.name);
+                  updateQuantity(
+                    product.name,
+                    quantities[product.name] > 0 ? 0 : 2
+                  );
+
                   document.getElementById("order")?.scrollIntoView({
                     behavior: "smooth",
                   });
                 }}
               >
-                {selected.includes(product.name) ? "SELECTED ✓" : "ADD TO ORDER +"}
+                {quantities[product.name] > 0
+                  ? `${quantities[product.name]} IN ORDER ✓`
+                  : "ADD TO ORDER +"}
               </button>
             </article>
           ))}
         </div>
+
         <p className="scroll-hint">SCROLL TO EXPLORE →</p>
       </section>
 
@@ -108,14 +178,20 @@ export default function Home() {
         <div className="order-intro">
           <p className="eyebrow">MADE JUST FOR YOU</p>
           <h1>A little sweetness, your way.</h1>
-          <p>Tell us what you're craving. Send an order request and we'll confirm the details with you.</p>
+          <p>
+            Tell us what you're craving. Send an order request and
+            we'll confirm the details with you.
+          </p>
         </div>
 
         {state.succeeded ? (
           <div className="success">
             <div className="success-icon"></div>
-            <h2>Thank you, lovely!</h2>
+
+            <h2>Thank you!</h2>
+
             <p>Your order request has been sent to Saré.</p>
+
             <p className="notice">
               We'll review your request and contact you by email.
               Your order is not confirmed until you hear from us.
@@ -124,7 +200,14 @@ export default function Home() {
             <button
               className="outline-button"
               type="button"
-              onClick={() => reset()}
+              onClick={() => {
+                reset();
+                setQuantities(
+                  Object.fromEntries(
+                    products.map((product) => [product.name, 0])
+                  )
+                );
+              }}
             >
               BACK TO THE FORM
             </button>
@@ -133,9 +216,17 @@ export default function Home() {
           <form
             className="order-form"
             onSubmit={(event) => {
-              if (selected.length === 0) {
+              if (
+                totalQuantity < 2 ||
+                totalQuantity > 24 ||
+                totalQuantity % 2 !== 0
+              ) {
                 event.preventDefault();
-                alert("Please choose at least one bakery item.");
+
+                alert(
+                  "Please choose between 2 and 24 pieces in total, with an even total quantity."
+                );
+
                 return;
               }
 
@@ -144,8 +235,14 @@ export default function Home() {
           >
             <input
               type="hidden"
-              name="flavours"
-              value={selected.join(", ")}
+              name="orderDetails"
+              value={orderDetails}
+            />
+
+            <input
+              type="hidden"
+              name="totalQuantity"
+              value={totalQuantity}
             />
 
             <input
@@ -153,17 +250,32 @@ export default function Home() {
               name="_subject"
               value="New Saré order request"
             />
-            <div className="form-title"><span>01</span><h2>Your details</h2></div>
+
+            <div className="form-title">
+              <span>01</span>
+              <h2>Your details</h2>
+            </div>
 
             <div className="fields">
               <label>
                 Full name *
-                <input name="name" placeholder="Your name" required />
+                <input
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
               </label>
+
               <label>
                 Phone number *
-                <input name="phone" type="tel" placeholder="+372 ..." required />
+                <input
+                  name="phone"
+                  type="tel"
+                  placeholder="+372 ..."
+                  required
+                />
               </label>
+
               <label className="wide">
                 Email address *
                 <input
@@ -175,37 +287,60 @@ export default function Home() {
               </label>
             </div>
 
-            <div className="form-title"><span>02</span><h2>Your treats</h2></div>
+            <div className="form-title">
+              <span>02</span>
+              <h2>Your treats</h2>
+            </div>
+
             <fieldset className="flavours">
-              <legend>Choose your flavours *</legend>
-              <p className="small-note">Select all that apply.</p>
+              <legend>Choose your treats *</legend>
+
+              <p className="small-note">
+                Choose how many pieces of each treat you'd like.
+                Leave unwanted items at 0.
+              </p>
+
               <div className="flavour-grid">
-                {flavours.map((flavour) => (
-                  <label className="flavour" key={flavour}>
-                    <input
-                      type="checkbox"
-                      checked={selected.includes(flavour)}
-                      onChange={() => toggleFlavour(flavour)}
-                    />
-                    <span>{flavour}</span>
+                {products.map((product) => (
+                  <label className="flavour" key={product.name}>
+                    <span>{product.name}</span>
+
+                    <select
+                      aria-label={`Quantity of ${product.name}`}
+                      value={quantities[product.name]}
+                      onChange={(event) =>
+                        updateQuantity(
+                          product.name,
+                          Number(event.target.value)
+                        )
+                      }
+                    >
+                      {Array.from(
+                        { length: 25 },
+                        (_, index) => index
+                      ).map((count) => (
+                        <option key={count} value={count}>
+                          {count}
+                        </option>
+                      ))}
+                    </select>
                   </label>
                 ))}
+              </div>
+
+              <div className="order-total">
+                <p>
+                  <strong>Total pieces:</strong> {totalQuantity}
+                </p>
+
+                <p className="small-note">
+                  Minimum 2 pieces, maximum 24 pieces per order.
+                  Your total must be an even number.
+                </p>
               </div>
             </fieldset>
 
             <div className="fields">
-              <label>
-                Number of sweets *
-                <select name="quantity" defaultValue="" required>
-                  <option value="" disabled>Choose quantity</option>
-                  {Array.from({ length: 12 }, (_, i) => (i + 1) * 2).map((count) => (
-                    <option key={count} value={count}>
-                      {count} pieces
-                    </option>
-                  ))}
-                </select>
-              </label>
-
               <label>
                 Preferred pickup date *
                 <input
@@ -217,30 +352,43 @@ export default function Home() {
               </label>
 
               <div className="wide pickup-info">
-                <p><strong>Pickup location</strong></p>
+                <p>
+                  <strong>Pickup location</strong>
+                </p>
+
                 <p>Smartpost parcel terminal</p>
                 <p>Pärnu mnt. 22, 10141 Tallinn, Estonia</p>
+
                 <p className="small-note">
-                  We'll notify you by email when your sweets have been delivered
-                  and are ready to collect.
+                  We'll notify you by email when your sweets have
+                  been delivered and are ready to collect.
                 </p>
               </div>
 
               <div className="wide payment-info">
-                <p><strong>Payment by bank transfer</strong></p>
                 <p>
-                  After reviewing your order, we'll email you the total price
-                  and payment instructions. Please wait for the invoice before
-                  sending payment.
+                  <strong>Payment by bank transfer</strong>
+                </p>
+
+                <p>
+                  After reviewing your order, we'll email you the
+                  total price and payment instructions. Please wait
+                  for the invoice before sending payment.
                 </p>
               </div>
+
               <label className="wide">
                 Allergies or special notes
-                <textarea name="notes" rows={4} placeholder="Anything we should know?" />
+                <textarea
+                  name="notes"
+                  rows={4}
+                  placeholder="Anything we should know?"
+                />
               </label>
             </div>
 
             <p className="small-note">* Required fields</p>
+
             <ValidationError errors={state.errors} />
 
             <button
@@ -248,22 +396,33 @@ export default function Home() {
               type="submit"
               disabled={state.submitting}
             >
-              {state.submitting ? "SENDING..." : "SEND ORDER REQUEST"}
+              {state.submitting
+                ? "SENDING..."
+                : "SEND ORDER REQUEST"}
+
               {!state.submitting && <span> ↗</span>}
             </button>
+
             <p className="form-disclaimer">
-              Your order is not confirmed until you receive a confirmation from Saré.
-              Sending this form does not confirm your order.
+              Your order is not confirmed until you receive a
+              confirmation from Saré. Sending this form does not
+              confirm your order.
             </p>
           </form>
         )}
       </section>
 
       <footer>
-        <a className="footer-brand" href="#home" aria-label="Saré home">
+        <a
+          className="footer-brand"
+          href="#home"
+          aria-label="Saré home"
+        >
           <img src="/tekst.png" alt="Saré" />
         </a>
+
         <p>Some things are worth the wait.</p>
+
         <a
           className="instagram"
           href="https://www.instagram.com/sarehomebakery/?utm_source=ig_web_button_share_sheet"
@@ -272,6 +431,7 @@ export default function Home() {
         >
           FIND US ON INSTAGRAM ↗
         </a>
+
         <div className="footer-bottom">
           <span>© SARÉ</span>
           <a href="#home">BACK TO TOP ↑</a>
