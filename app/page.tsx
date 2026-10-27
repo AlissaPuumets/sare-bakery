@@ -357,7 +357,7 @@ export default function Home() {
                 </p>
 
                 <p>Smartpost parcel terminal</p>
-                <p>Pärnu mnt. 22, 10141 Tallinn, Estonia</p>
+                <p>Pärnu mnt. 67a, 10134 Tallinn, Estonia</p>
 
                 <p className="small-note">
                   We'll notify you by email when your sweets have
