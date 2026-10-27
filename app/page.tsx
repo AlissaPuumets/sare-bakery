@@ -111,7 +111,7 @@ export default function Home() {
         </div>
 
         <p className="tagline">
-          Little treats, made to make your day.
+          Love at first bite.
         </p>
 
         <a className="outline-button" href="#menu">
