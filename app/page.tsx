@@ -50,7 +50,148 @@ const products = [
   },
 ];
 
+const translations = {
+  en: {
+    language: "ET",
+    languageLabel: "Switch language to Estonian",
+    navMenu: "THE MENU",
+    navOrder: "YOUR ORDER",
+    eyebrow: "A SMALL BAKERY WITH A BIG HEART",
+    tagline: "Love at first bite.",
+    discover: "DISCOVER THE MENU ↓",
+    heroBottom: "HANDMADE · FRESHLY BAKED · MADE WITH LOVE",
+    menuEyebrow: "A LITTLE SOMETHING SWEET",
+    menuTitle: "The Menu",
+    menuSubtitle: "Find your new favourite.",
+    cookie: "COOKIE",
+    brownie: "BROWNIE",
+    giftBox: "GIFT BOX",
+    add: "ADD TO ORDER +",
+    inOrder: "IN ORDER ✓",
+    scrollHint: "SCROLL TO EXPLORE →",
+    orderEyebrow: "MADE JUST FOR YOU",
+    orderTitle: "A little sweetness, your way.",
+    orderDescription:
+      "Tell us what you're craving. Send an order request and we'll confirm the details with you.",
+    thankYou: "Thank you!",
+    successMessage: "Your order request has been sent to Saré.",
+    successNotice:
+      "We'll review your request and contact you by email. Your order is not confirmed until you hear from us.",
+    backToForm: "BACK TO THE FORM",
+    details: "Your details",
+    treats: "Your treats",
+    fullName: "Full name *",
+    yourName: "Your name",
+    phone: "Phone number *",
+    email: "Email address *",
+    chooseTreats: "Choose your treats *",
+    chooseQuantity:
+      "Choose how many pieces of each treat you'd like. Leave unwanted items at 0.",
+    totalPieces: "Total pieces:",
+    quantityLimit:
+      "Minimum 2 pieces, maximum 24 pieces per order. Your total must be an even number.",
+    pickupDate: "Preferred pickup date *",
+    pickupLocation: "Pickup location",
+    parcelTerminal: "Smartpost parcel terminal",
+    pickupNotice:
+      "We'll notify you by email when your sweets have been delivered and are ready to collect.",
+    paymentTitle: "Payment by bank transfer",
+    paymentDescription:
+      "After reviewing your order, we'll email you the total price and payment instructions. Please wait for the invoice before sending payment.",
+    specialNotes: "Allergies or special notes",
+    notesPlaceholder: "Anything we should know?",
+    requiredFields: "* Required fields",
+    sending: "SENDING...",
+    submit: "SEND ORDER REQUEST",
+    disclaimer:
+      "Your order is not confirmed until you receive a confirmation from Saré. Sending this form does not confirm your order.",
+    alertQuantity:
+      "Please choose between 2 and 24 pieces in total, with an even total quantity.",
+    footerTagline: "Some things are worth the wait.",
+    instagram: "FIND US ON INSTAGRAM ↗",
+    backToTop: "BACK TO TOP ↑",
+    quantityLabel: "Quantity of",
+    piece: "piece(s)",
+  },
+  et: {
+    language: "EN",
+    languageLabel: "Switch language to English",
+    navMenu: "MEIE MENÜÜ",
+    navOrder: "SINU TELLIMUS",
+    eyebrow: "VÄIKE PAGARIÄRI SUURE SÜDAMEGA",
+    tagline: "Armastus esimesest ampsust.",
+    discover: "AVASTA MEIE MENÜÜ ↓",
+    heroBottom: "KÄSITSI VALMISTATUD · VÄRSKELT KÜPSETATUD · ARMASTUSEGA",
+    menuEyebrow: "MIDAGI MAGUSAT",
+    menuTitle: "Meie menüü",
+    menuSubtitle: "Leia oma uus lemmik.",
+    cookie: "KÜPSIS",
+    brownie: "BROWNIE",
+    giftBox: "KINGIKARP",
+    add: "LISA TELLIMUSSE +",
+    inOrder: "TELLITUD ✓",
+    scrollHint: "KERIMISEKS AVASTA →",
+    orderEyebrow: "VALMISTATUD JUST SULLE",
+    orderTitle: "Natuke magusust, just sinu moodi.",
+    orderDescription:
+      "Anna meile teada, mille järele sul isu on. Saada tellimuse päring ja kinnitame sinuga tellimuse üksikasjad.",
+    thankYou: "Aitäh!",
+    successMessage: "Sinu tellimuse päring on Saréle saadetud.",
+    successNotice:
+      "Vaatame sinu päringu üle ja võtame sinuga e-posti teel ühendust. Tellimus ei ole kinnitatud enne, kui oleme sulle vastanud.",
+    backToForm: "TAGASI VORMI JUURDE",
+    details: "Sinu andmed",
+    treats: "Sinu maiustused",
+    fullName: "Täisnimi *",
+    yourName: "Sinu nimi",
+    phone: "Telefoninumber *",
+    email: "E-posti aadress *",
+    chooseTreats: "Vali oma maiustused *",
+    chooseQuantity:
+      "Vali, mitu tükki igat maiustust soovid. Tooted, mida sa ei soovi, jäta kogusega 0.",
+    totalPieces: "Tükke kokku:",
+    quantityLimit:
+      "Minimaalselt 2 ja maksimaalselt 24 tükki tellimuse kohta. Koguarv peab olema paarisarv.",
+    pickupDate: "Soovitud kättesaamise kuupäev *",
+    pickupLocation: "Kättesaamise asukoht",
+    parcelTerminal: "Smartposti pakiautomaat",
+    pickupNotice:
+      "Anname sulle e-posti teel teada, kui maiustused on kohale jõudnud ja valmis kättesaamiseks.",
+    paymentTitle: "Tasumine pangaülekandega",
+    paymentDescription:
+      "Pärast tellimuse ülevaatamist saadame sulle e-posti teel koguhinna ja maksejuhised. Palun oota arve saabumist enne makse tegemist.",
+    specialNotes: "Allergiad või erisoovid",
+    notesPlaceholder: "Kas peaksime midagi teadma?",
+    requiredFields: "* Kohustuslikud väljad",
+    sending: "SAADAME...",
+    submit: "SAADA TELLIMUSE PÄRING",
+    disclaimer:
+      "Tellimus ei ole kinnitatud enne, kui oled saanud Sarélt kinnituse. Vormi saatmine ei tähenda tellimuse kinnitamist.",
+    alertQuantity:
+      "Palun vali kokku 2–24 tükki. Tükkide koguarv peab olema paarisarv.",
+    footerTagline: "Mõned asjad on ootamist väärt.",
+    instagram: "LEIA MEID INSTAGRAMIST ↗",
+    backToTop: "TAGASI ÜLESSE ↑",
+    quantityLabel: "Toote kogus:",
+    piece: "tk",
+  },
+} as const;
+
+type Language = keyof typeof translations;
+type TranslationKey = keyof typeof translations.en;
+
+const productDescriptions: Record<string, string> = {
+  "Chocolate Chip": "Kuldsed servad, pehme sisu ja tume šokolaad.",
+  "Strawberry Cloud": "Valge šokolaad maasikase nüansiga.",
+  "Brown Butter Bliss": "Pruunistatud või ja pisut meresoola.",
+  "Fudgy Brownie": "Rikkalik, šokolaadine ja mõnusalt mahlane.",
+  "Vanilla Dream": "Võine vanilliküpsis valge šokolaadiga.",
+  "The Saré Box": "Väike karp meie lemmikutest.",
+};
+
 export default function Home() {
+  const [language, setLanguage] = useState<Language>("en");
+
   const [quantities, setQuantities] = useState<Record<string, number>>(
     Object.fromEntries(products.map((product) => [product.name, 0]))
   );
@@ -58,6 +199,8 @@ export default function Home() {
   const [minPickupDate, setMinPickupDate] = useState("");
 
   const [state, handleSubmit, reset] = useForm("mjyyyzzd");
+
+  const t = (key: TranslationKey) => translations[language][key];
 
   const totalQuantity = Object.values(quantities).reduce(
     (total, quantity) => total + quantity,
@@ -68,7 +211,7 @@ export default function Home() {
     .filter((product) => quantities[product.name] > 0)
     .map(
       (product) =>
-        `${product.name}: ${quantities[product.name]} piece(s)`
+        `${product.name}: ${quantities[product.name]} ${t("piece")}`
     )
     .join("\n");
 
@@ -90,6 +233,10 @@ export default function Home() {
     }));
   }
 
+  function toggleLanguage() {
+    setLanguage((previous) => (previous === "en" ? "et" : "en"));
+  }
+
   return (
     <main>
       <header className="navbar">
@@ -98,36 +245,42 @@ export default function Home() {
         </a>
 
         <nav>
-          <a href="#menu">THE MENU</a>
-          <a href="#order">YOUR ORDER</a>
+          <a href="#menu">{t("navMenu")}</a>
+          <a href="#order">{t("navOrder")}</a>
         </nav>
+
+        <button
+          type="button"
+          className="language-button"
+          onClick={toggleLanguage}
+          aria-label={t("languageLabel")}
+          title={t("languageLabel")}
+        >
+          {t("language")}
+        </button>
       </header>
 
       <section className="hero" id="home">
-        <p className="eyebrow">A SMALL BAKERY WITH A BIG HEART</p>
+        <p className="eyebrow">{t("eyebrow")}</p>
 
         <div className="hero-wordmark">
           <img src="/sare-logo.png" alt="Saré bakery" />
         </div>
 
-        <p className="tagline">
-          Love at first bite.
-        </p>
+        <p className="tagline">{t("tagline")}</p>
 
         <a className="outline-button" href="#menu">
-          DISCOVER THE MENU ↓
+          {t("discover")}
         </a>
 
-        <p className="hero-bottom">
-          HANDMADE · FRESHLY BAKED · MADE WITH LOVE
-        </p>
+        <p className="hero-bottom">{t("heroBottom")}</p>
       </section>
 
       <section className="menu-section" id="menu">
         <div className="section-title">
-          <p className="eyebrow">A LITTLE SOMETHING SWEET</p>
-          <h1>The Menu</h1>
-          <p>Find your new favourite.</p>
+          <p className="eyebrow">{t("menuEyebrow")}</p>
+          <h1>{t("menuTitle")}</h1>
+          <p>{t("menuSubtitle")}</p>
         </div>
 
         <div className="menu-scroll">
@@ -138,7 +291,13 @@ export default function Home() {
                 <small>SARÉ PATISSERIE</small>
               </div>
 
-              <p className="product-type">{product.type}</p>
+              <p className="product-type">
+                {product.type === "COOKIE"
+                  ? t("cookie")
+                  : product.type === "BROWNIE"
+                    ? t("brownie")
+                    : t("giftBox")}
+              </p>
 
               <div className="product-heading">
                 <h2>{product.name}</h2>
@@ -146,7 +305,9 @@ export default function Home() {
               </div>
 
               <p className="product-description">
-                {product.description}
+                {language === "et"
+                  ? productDescriptions[product.name]
+                  : product.description}
               </p>
 
               <button
@@ -164,38 +325,32 @@ export default function Home() {
                 }}
               >
                 {quantities[product.name] > 0
-                  ? `${quantities[product.name]} IN ORDER ✓`
-                  : "ADD TO ORDER +"}
+                  ? `${quantities[product.name]} ${t("inOrder")}`
+                  : t("add")}
               </button>
             </article>
           ))}
         </div>
 
-        <p className="scroll-hint">SCROLL TO EXPLORE →</p>
+        <p className="scroll-hint">{t("scrollHint")}</p>
       </section>
 
       <section className="order-section" id="order">
         <div className="order-intro">
-          <p className="eyebrow">MADE JUST FOR YOU</p>
-          <h1>A little sweetness, your way.</h1>
-          <p>
-            Tell us what you're craving. Send an order request and
-            we'll confirm the details with you.
-          </p>
+          <p className="eyebrow">{t("orderEyebrow")}</p>
+          <h1>{t("orderTitle")}</h1>
+          <p>{t("orderDescription")}</p>
         </div>
 
         {state.succeeded ? (
           <div className="success">
-            <div className="success-icon"></div>
+            <div className="success-icon">♡</div>
 
-            <h2>Thank you!</h2>
+            <h2>{t("thankYou")}</h2>
 
-            <p>Your order request has been sent to Saré.</p>
+            <p>{t("successMessage")}</p>
 
-            <p className="notice">
-              We'll review your request and contact you by email.
-              Your order is not confirmed until you hear from us.
-            </p>
+            <p className="notice">{t("successNotice")}</p>
 
             <button
               className="outline-button"
@@ -209,7 +364,7 @@ export default function Home() {
                 );
               }}
             >
-              BACK TO THE FORM
+              {t("backToForm")}
             </button>
           </div>
         ) : (
@@ -222,11 +377,7 @@ export default function Home() {
                 totalQuantity % 2 !== 0
               ) {
                 event.preventDefault();
-
-                alert(
-                  "Please choose between 2 and 24 pieces in total, with an even total quantity."
-                );
-
+                alert(t("alertQuantity"));
                 return;
               }
 
@@ -253,21 +404,21 @@ export default function Home() {
 
             <div className="form-title">
               <span>01</span>
-              <h2>Your details</h2>
+              <h2>{t("details")}</h2>
             </div>
 
             <div className="fields">
               <label>
-                Full name *
+                {t("fullName")}
                 <input
                   name="name"
-                  placeholder="Your name"
+                  placeholder={t("yourName")}
                   required
                 />
               </label>
 
               <label>
-                Phone number *
+                {t("phone")}
                 <input
                   name="phone"
                   type="tel"
@@ -277,7 +428,7 @@ export default function Home() {
               </label>
 
               <label className="wide">
-                Email address *
+                {t("email")}
                 <input
                   name="email"
                   type="email"
@@ -289,16 +440,13 @@ export default function Home() {
 
             <div className="form-title">
               <span>02</span>
-              <h2>Your treats</h2>
+              <h2>{t("treats")}</h2>
             </div>
 
             <fieldset className="flavours">
-              <legend>Choose your treats *</legend>
+              <legend>{t("chooseTreats")}</legend>
 
-              <p className="small-note">
-                Choose how many pieces of each treat you'd like.
-                Leave unwanted items at 0.
-              </p>
+              <p className="small-note">{t("chooseQuantity")}</p>
 
               <div className="flavour-grid">
                 {products.map((product) => (
@@ -306,7 +454,7 @@ export default function Home() {
                     <span>{product.name}</span>
 
                     <select
-                      aria-label={`Quantity of ${product.name}`}
+                      aria-label={`${t("quantityLabel")} ${product.name}`}
                       value={quantities[product.name]}
                       onChange={(event) =>
                         updateQuantity(
@@ -330,19 +478,16 @@ export default function Home() {
 
               <div className="order-total">
                 <p>
-                  <strong>Total pieces:</strong> {totalQuantity}
+                  <strong>{t("totalPieces")}</strong> {totalQuantity}
                 </p>
 
-                <p className="small-note">
-                  Minimum 2 pieces, maximum 24 pieces per order.
-                  Your total must be an even number.
-                </p>
+                <p className="small-note">{t("quantityLimit")}</p>
               </div>
             </fieldset>
 
             <div className="fields">
               <label>
-                Preferred pickup date *
+                {t("pickupDate")}
                 <input
                   name="pickupDate"
                   type="date"
@@ -353,41 +498,34 @@ export default function Home() {
 
               <div className="wide pickup-info">
                 <p>
-                  <strong>Pickup location</strong>
+                  <strong>{t("pickupLocation")}</strong>
                 </p>
 
-                <p>Smartpost parcel terminal</p>
+                <p>{t("parcelTerminal")}</p>
                 <p>Pärnu mnt. 67a, 10134 Tallinn, Estonia</p>
 
-                <p className="small-note">
-                  We'll notify you by email when your sweets have
-                  been delivered and are ready to collect.
-                </p>
+                <p className="small-note">{t("pickupNotice")}</p>
               </div>
 
               <div className="wide payment-info">
                 <p>
-                  <strong>Payment by bank transfer</strong>
+                  <strong>{t("paymentTitle")}</strong>
                 </p>
 
-                <p>
-                  After reviewing your order, we'll email you the
-                  total price and payment instructions. Please wait
-                  for the invoice before sending payment.
-                </p>
+                <p>{t("paymentDescription")}</p>
               </div>
 
               <label className="wide">
-                Allergies or special notes
+                {t("specialNotes")}
                 <textarea
                   name="notes"
                   rows={4}
-                  placeholder="Anything we should know?"
+                  placeholder={t("notesPlaceholder")}
                 />
               </label>
             </div>
 
-            <p className="small-note">* Required fields</p>
+            <p className="small-note">{t("requiredFields")}</p>
 
             <ValidationError errors={state.errors} />
 
@@ -396,18 +534,12 @@ export default function Home() {
               type="submit"
               disabled={state.submitting}
             >
-              {state.submitting
-                ? "SENDING..."
-                : "SEND ORDER REQUEST"}
+              {state.submitting ? t("sending") : t("submit")}
 
               {!state.submitting && <span> ↗</span>}
             </button>
 
-            <p className="form-disclaimer">
-              Your order is not confirmed until you receive a
-              confirmation from Saré. Sending this form does not
-              confirm your order.
-            </p>
+            <p className="form-disclaimer">{t("disclaimer")}</p>
           </form>
         )}
       </section>
@@ -421,7 +553,7 @@ export default function Home() {
           <img src="/tekst.png" alt="Saré" />
         </a>
 
-        <p>Some things are worth the wait.</p>
+        <p>{t("footerTagline")}</p>
 
         <a
           className="instagram"
@@ -429,12 +561,12 @@ export default function Home() {
           target="_blank"
           rel="noreferrer"
         >
-          FIND US ON INSTAGRAM ↗
+          {t("instagram")}
         </a>
 
         <div className="footer-bottom">
           <span>© SARÉ</span>
-          <a href="#home">BACK TO TOP ↑</a>
+          <a href="#home">{t("backToTop")}</a>
         </div>
       </footer>
     </main>
