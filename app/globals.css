@@ -1,5 +1,8 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* ================================
+   VARIABLES & GLOBAL STYLES
+   ================================ */
 
 :root {
   --pink: #eec5de;
@@ -17,7 +20,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 90px;
 }
 
 body {
@@ -43,6 +46,7 @@ textarea {
 
 button {
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 ::selection {
@@ -50,32 +54,43 @@ button {
   color: white;
 }
 
-/* Navigation */
+/* ================================
+   NAVIGATION
+   ================================ */
 
 .navbar {
-  min-height: 75px;
-  padding: 14px 7%;
+  min-height: 82px;
+  padding: 8px 3%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  gap: 24px;
+  background: var(--blue);
+  color: var(--cream);
+  border-bottom: none;
 }
 
-.brand,
-.footer-brand {
-  font-family: var(--serif);
-  font-size: 36px;
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0 auto 0 0;
+  padding: 0;
   line-height: 1;
-  letter-spacing: -1px;
 }
 
-.brand span {
-  color: var(--blue);
+.brand img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
 .navbar nav {
   display: flex;
-  gap: 28px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .navbar nav a,
@@ -90,15 +105,28 @@ button {
   letter-spacing: 1.4px;
 }
 
-.navbar nav a:hover {
-  color: var(--blue);
+.navbar nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 16px;
+  color: var(--cream);
+  transition: background-color .2s, color .2s;
 }
 
-/* Hero */
+.navbar nav a:hover {
+  color: white;
+  background: rgba(255, 255, 255, .12);
+}
+
+/* ================================
+   HOMEPAGE HERO
+   ================================ */
 
 .hero {
   min-height: 540px;
-  padding: 90px 20px 60px;
+  padding: 80px 20px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,10 +157,18 @@ button {
   letter-spacing: 0;
 }
 
+.hero-wordmark img {
+  display: block;
+  width: min(600px, 92vw);
+  height: 300px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
 .tagline {
-  margin: 24px 0 28px;
+  margin: 20px 0 30px;
   font-family: var(--serif);
-  font-size: 23px;
+  font-size: 27px;
   font-style: italic;
 }
 
@@ -141,15 +177,17 @@ button {
   justify-content: center;
   align-items: center;
   gap: 25px;
-  min-height: 46px;
-  padding: 12px 22px;
+  min-height: 52px;
+  padding: 15px 26px;
   border: 1px solid var(--blue);
   background: transparent;
   color: var(--blue);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.3px;
-  transition: .2s;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color .2s, color .2s;
 }
 
 .outline-button:hover {
@@ -162,7 +200,9 @@ button {
   opacity: .7;
 }
 
-/* Menu */
+/* ================================
+   MENU
+   ================================ */
 
 .menu-section {
   padding: 85px 0 75px;
@@ -184,7 +224,7 @@ button {
   line-height: 1.1;
 }
 
-.section-title > p:last-child {
+.section-title>p:last-child {
   color: #75696d;
 }
 
@@ -215,7 +255,7 @@ button {
   color: var(--blue);
 }
 
-.product-art > span {
+.product-art>span {
   font-family: var(--serif);
   font-size: 75px;
 }
@@ -260,7 +300,7 @@ button {
   line-height: 1.2;
 }
 
-.product-heading > span {
+.product-heading>span {
   flex-shrink: 0;
   color: var(--blue);
   font-size: 11px;
@@ -272,19 +312,30 @@ button {
   font-size: 11px;
 }
 
+/* Bigger menu button click areas */
+
 .add-button {
-  padding: 8px 0;
-  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin: 2px 0;
+  padding: 12px 18px;
+  border: 1px solid transparent;
   border-bottom: 1px solid var(--blue);
   background: transparent;
   color: var(--blue);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.2px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color .2s, color .2s;
 }
 
 .add-button:hover {
-  opacity: .65;
+  background: var(--blue);
+  color: white;
 }
 
 .scroll-hint {
@@ -293,7 +344,9 @@ button {
   text-align: center;
 }
 
-/* Order section */
+/* ================================
+   ORDER SECTION
+   ================================ */
 
 .small-note {
   color: #75696d;
@@ -316,7 +369,7 @@ button {
   max-width: 330px;
 }
 
-.order-intro > p:not(.eyebrow) {
+.order-intro>p:not(.eyebrow) {
   max-width: 300px;
   color: #57454f;
   font-size: 13px;
@@ -336,7 +389,9 @@ button {
   vertical-align: top;
 }
 
-/* Form */
+/* ================================
+   FORM
+   ================================ */
 
 .order-form,
 .success {
@@ -358,7 +413,7 @@ button {
   margin-top: 35px;
 }
 
-.form-title > span {
+.form-title>span {
   color: var(--blue);
   font-size: 10px;
 }
@@ -414,7 +469,9 @@ button {
   resize: vertical;
 }
 
-/* Individual product quantities */
+/* ================================
+   SWEET QUANTITY SELECTORS
+   ================================ */
 
 .flavours {
   min-width: 0;
@@ -428,7 +485,7 @@ button {
   font-weight: 500;
 }
 
-.flavours > .small-note {
+.flavours>.small-note {
   margin: 5px 0 13px;
 }
 
@@ -442,15 +499,15 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
-  min-height: 48px;
-  padding: 8px 10px;
+  min-height: 56px;
+  padding: 8px 12px;
   border: 1px solid #e3d6d9;
   background: #fffdfa;
   cursor: pointer;
   font-size: 11px;
-  transition: border-color .2s, background .2s;
+  transition: border-color .2s, background-color .2s;
 }
 
 .flavour:focus-within {
@@ -458,22 +515,31 @@ button {
   background: #f5edf3;
 }
 
-.flavour > span {
+.flavour>span {
   flex: 1;
   min-width: 0;
   line-height: 1.4;
 }
 
+/* Custom dropdown arrow with extra space on the right */
+
 .flavour select {
+  appearance: none;
+  -webkit-appearance: none;
   flex-shrink: 0;
-  width: 60px;
-  min-width: 60px;
-  min-height: 36px;
-  padding: 6px 8px;
+  width: 76px;
+  min-width: 76px;
+  min-height: 42px;
+  margin-left: 4px;
+  padding: 8px 34px 8px 10px;
   border: 1px solid #e3d6d9;
   border-radius: 0;
   outline: none;
-  background: #fff;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231A3B6D' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
   color: var(--ink);
   font-size: 12px;
   cursor: pointer;
@@ -498,23 +564,27 @@ button {
   margin-bottom: 0;
 }
 
-/* Submit button */
+/* ================================
+   SUBMIT BUTTON
+   ================================ */
 
 .submit-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 50px;
+  min-height: 58px;
   margin-top: 10px;
-  padding: 14px 17px;
+  padding: 17px 22px;
   border: 1px solid var(--blue);
   background: var(--blue);
   color: white;
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.3px;
-  transition: .2s;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color .2s, color .2s;
 }
 
 .submit-button:hover:not(:disabled) {
@@ -535,7 +605,9 @@ button {
   text-align: center;
 }
 
-/* Success message */
+/* ================================
+   SUCCESS MESSAGE
+   ================================ */
 
 .success {
   text-align: center;
@@ -564,7 +636,9 @@ button {
   margin-top: 10px;
 }
 
-/* Footer */
+/* ================================
+   FOOTER
+   ================================ */
 
 footer {
   padding: 60px 7% 20px;
@@ -575,10 +649,19 @@ footer {
 
 .footer-brand {
   display: inline-block;
+  font-family: var(--serif);
   font-size: 54px;
+  line-height: 1;
 }
 
-footer > p {
+.footer-brand img {
+  display: block;
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+footer>p {
   font-family: var(--serif);
   font-size: 19px;
   font-style: italic;
@@ -587,7 +670,7 @@ footer > p {
 .instagram {
   display: inline-block;
   margin-top: 10px;
-  padding-bottom: 4px;
+  padding: 8px 4px;
   border-bottom: 1px solid var(--pink);
   font-size: 8px;
 }
@@ -601,36 +684,31 @@ footer > p {
   font-size: 8px;
 }
 
-/* Header and footer logo images */
+/* ================================
+   KEYBOARD ACCESSIBILITY
+   ================================ */
 
-.brand {
-  margin-left: 0;
-  padding-left: 0;
+.navbar a:focus-visible,
+.add-button:focus-visible,
+.outline-button:focus-visible,
+.submit-button:focus-visible,
+.footer-bottom a:focus-visible,
+.instagram:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
 }
 
-.brand img {
-  display: block;
-  width: 80px;
-  height: 100px;
-  object-fit: contain;
+.flavour select:focus-visible,
+.fields input:focus-visible,
+.fields select:focus-visible,
+.fields textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
 }
 
-.hero-wordmark img {
-  display: block;
-  width: min(450px, 85vw);
-  height: 240px;
-  margin: 0 auto;
-  object-fit: contain;
-}
-
-.footer-brand img {
-  display: block;
-  width: 120px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Tablet */
+/* ================================
+   TABLET
+   ================================ */
 
 @media (max-width: 800px) {
   .order-section {
@@ -648,38 +726,60 @@ footer > p {
   }
 }
 
-/* Mobile */
+/* ================================
+   MOBILE
+   ================================ */
 
 @media (max-width: 520px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
   .navbar {
-    padding: 14px 5%;
-  }
-
-  .navbar nav {
-    gap: 15px;
-  }
-
-  .navbar nav a {
-    font-size: 8px;
-    letter-spacing: .5px;
+    min-height: 72px;
+    padding: 8px 3%;
+    gap: 6px;
   }
 
   .brand img {
-    width: 70px;
-    height: 70px;
+    width: 96px;
+    height: 90px;
+  }
+
+  .navbar nav {
+    gap: 2px;
+  }
+
+  .navbar nav a {
+    min-height: 44px;
+    padding: 10px 8px;
+    font-size: 8px;
+    letter-spacing: .4px;
   }
 
   .hero {
     min-height: 430px;
+    padding: 65px 14px 45px;
   }
 
   .hero-wordmark img {
-    width: 85vw;
-    height: 140px;
+    width: 94vw;
+    height: 190px;
   }
 
   .tagline {
-    font-size: 20px;
+    margin: 20px 0 28px;
+    font-size: 23px;
+  }
+
+  .hero-bottom {
+    margin-top: 40px;
+    font-size: 8px;
+  }
+
+  .outline-button {
+    max-width: 100%;
+    padding: 14px 18px;
   }
 
   .menu-section {
@@ -700,6 +800,16 @@ footer > p {
     height: 270px;
   }
 
+  .add-button {
+    min-height: 48px;
+    padding: 12px 14px;
+  }
+
+  .order-section {
+    padding: 55px 5%;
+    gap: 25px;
+  }
+
   .order-form,
   .success {
     padding: 23px 17px;
@@ -715,6 +825,25 @@ footer > p {
   }
 
   .flavour {
-    min-height: 48px;
+    min-height: 56px;
+    padding: 8px 12px;
+    gap: 12px;
+  }
+
+  .flavour select {
+    width: 76px;
+    min-width: 76px;
+    min-height: 42px;
+    padding-right: 34px;
+    background-position: right 12px center;
+  }
+
+  .submit-button {
+    min-height: 56px;
+    padding: 16px;
+  }
+
+  footer {
+    padding: 45px 5% 20px;
   }
 }

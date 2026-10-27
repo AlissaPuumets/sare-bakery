@@ -94,7 +94,7 @@ export default function Home() {
     <main>
       <header className="navbar">
         <a className="brand" href="#home" aria-label="Saré home">
-          <img src="/sare-logo.png" alt="Saré bakery logo" />
+          <img src="/sare-header-logo.png" alt="Saré home" />
         </a>
 
         <nav>
