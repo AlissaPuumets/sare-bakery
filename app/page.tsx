@@ -11,7 +11,7 @@ const products = [
     type: "COOKIE",
     price: "€3.00",
     description: "Golden edges, soft centre, dark chocolate.",
-    symbol: "✳",
+    symbol: "♡",
   },
   {
     name: "Strawberry Cloud",
@@ -25,7 +25,7 @@ const products = [
     type: "COOKIE",
     price: "€3.50",
     description: "Brown butter and a touch of sea salt.",
-    symbol: "✳",
+    symbol: "♡",
   },
   {
     name: "Fudgy Brownie",
@@ -39,7 +39,7 @@ const products = [
     type: "COOKIE",
     price: "€3.00",
     description: "A buttery vanilla cookie with white chocolate.",
-    symbol: "✳",
+    symbol: "♡",
   },
   {
     name: "The Saré Box",
@@ -118,7 +118,7 @@ const translations = {
     languageLabel: "Switch language to English",
     navMenu: "MEIE MENÜÜ",
     navOrder: "SINU TELLIMUS",
-    eyebrow: "VÄIKE PAGARIÄRI SUURE SÜDAMEGA",
+    eyebrow: "VÄIKESEST KODUPAGARIKOJAST, JUST SINULE",
     tagline: "Armastus esimesest ampsust.",
     discover: "AVASTA MEIE MENÜÜ ↓",
     heroBottom: "KÄSITSI VALMISTATUD · VÄRSKELT KÜPSETATUD · ARMASTUSEGA",
@@ -190,7 +190,7 @@ const productDescriptions: Record<string, string> = {
 };
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>("et");
 
   const [quantities, setQuantities] = useState<Record<string, number>>(
     Object.fromEntries(products.map((product) => [product.name, 0]))
